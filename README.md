@@ -4,3 +4,9 @@ Objective
 - Create MongoDB database.
 - Provide Structure, Schemas, Models to the database.
 - Establish groundwork for the API.
+
+
+![image](sc.png)
+
+
+![image](MDB.png)
