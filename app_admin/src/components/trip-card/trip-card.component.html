@@ -1,9 +1,8 @@
 <div class="card ml-4" style="width: 18rem;"> 
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="text-center mb-0 col">{{ trip.name }}</h5>
-        <app-delete-trip [trip]="trip" (tripDeleted)="deleteTrip($event)"></app-delete-trip>
+        <app-delete-trip [trip]="trip" (tripDeleted)="deleteTrip($event)" *ngIf="isLoggedIn()"></app-delete-trip>
     </div>
-
     <img src='../assets/images/{{ trip.image}}' alt="trip thumbnail" class="card-img-top">
     <div class="card-body"> 
         <h6 class="card-subtitle mb-2 text-muted"> 
@@ -14,7 +13,7 @@
         </p> 
         <p class="card-text" [innerHTML]="trip.description"> 
         </p>
-        <div>
+        <div *ngIf="isLoggedIn()">
             <button (click)="editTrip(trip)" class="btn btn-info">Edit</button>
         </div>
     </div> 

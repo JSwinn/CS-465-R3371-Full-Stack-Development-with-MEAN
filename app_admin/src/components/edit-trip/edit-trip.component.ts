@@ -19,7 +19,7 @@ export class EditTripComponent {
     private tripService: TripDataService
   ) { }
   
-ngOnInit() { // retrieve stashed tripId 
+ngOnInit() { 
   let tripCode = localStorage.getItem("tripCode"); 
   if (!tripCode) { 
     alert("Something wrong, couldn't find where I stashed tripCode!"); 
@@ -28,7 +28,7 @@ ngOnInit() { // retrieve stashed tripId
   } 
 
   console.log('EditTripComponent#onInit found tripCode ' + tripCode); 
-  // initialize form 
+
   this.editForm = this.formBuilder.group({ 
     _id: [], 
     code: [tripCode, Validators.required], 
@@ -42,7 +42,7 @@ ngOnInit() { // retrieve stashed tripId
   }) 
     console.log('EditTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')'); 
     this.tripService.getTrip(tripCode) 
-    .then(data => { console.log(data); // Don't use editForm.setValue() as it will throw console error 
+    .then(data => { console.log(data);
     this.editForm.patchValue(data[0]); 
   }) } 
   onSubmit() { 
@@ -50,7 +50,7 @@ ngOnInit() { // retrieve stashed tripId
     if (this.editForm.valid) { 
       this.tripService.updateTrip(this.editForm.value) 
       .then(data => { console.log(data); 
-        this.router.navigate(['']); 
+        this.router.navigate(['/list-trips']); 
       });
     }
   }
